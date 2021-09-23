@@ -1,0 +1,53 @@
+baseURL: https://blog.mua.blue
+defaultContentLanguage: zh
+title: Bai
+theme: PaperMod
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+enableInlineShortcodes: true
+
+taxonomies:
+    tag: tags
+
+params:
+    env: production
+    defaultTheme: auto
+    homeInfoParams:
+        Title: "你好"
+        Content: "我是一个普通的技术小白。"
+        
+    socialIcons: # optional
+        - name: "github"
+          url: "https://www.github.com"
+        - name: "weixin"
+          url: "https://www.github.com"
+    ShowCodeCopyButtons: true
+    ShowShareButtons: true
+    ShowReadingTime: true
+    ShowToc: true
+    ShowBreadCrumbs: true
+    
+menu:
+    main:
+        - name: Home
+          url: https://www.mua.blue
+          weight: 1
+        - name: Archive
+          url: archives
+          weight: 2
+        - name: Tags
+          url: tags/
+          weight: 3
+        - name: Search
+          url: search/
+          weight: 4
+
+    
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
