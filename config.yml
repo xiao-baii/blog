@@ -1,5 +1,6 @@
 baseURL: https://blog.mua.blue
 defaultContentLanguage: zh
+paginate: 5
 title: Bai
 theme: PaperMod
 
@@ -9,26 +10,35 @@ buildExpired: false
 enableEmoji: true
 enableInlineShortcodes: true
 
+permalinks:
+    posts: /:year-:month/:title/
+
 taxonomies:
     tag: tags
 
 params:
     env: production
     defaultTheme: auto
+    DateFormat: "2006-01-02"
+    comments: true
     homeInfoParams:
         Title: "你好"
         Content: "我是一个普通的技术小白。"
         
     socialIcons: # optional
         - name: "github"
-          url: "https://www.github.com"
-        - name: "weixin"
-          url: "https://www.github.com"
+          url: "https://github.com/xiao-baii"
+        - name: "qq"
+          url: "http://wpa.qq.com/msgrd?v=3&uin=1561317316&site=qq&menu=yes"
+        - name: "email"
+          url: "mailto:1561317316@qq.com"
+        - name: "bilibili"
+          url: "https://space.bilibili.com/38289119"
     ShowCodeCopyButtons: true
-    ShowShareButtons: true
     ShowReadingTime: true
     ShowToc: true
-    ShowBreadCrumbs: true
+    ShowPostNavLinks: true
+
     
 menu:
     main:
