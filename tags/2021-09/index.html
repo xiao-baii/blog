@@ -70,6 +70,75 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>uPic图床配置-Chevereto
+</h2>
+</header>
+<section class=entry-content>
+<p>安装uPic Homebrew:
+brew install --cask upic 手动:
+前往作者的Github下载。
+具体功能可以查看作者博客
+配置uPic 参数:
+API 地址: 填写上面准备好的 [上传服务地址] 请求方式: POST 使用 Base64: 勾选 文件字段名: source URL 路径: 上传完成后获取图片链接的路径。['image', 'url'] Content-Type: multipart/form-data; charset=utf-8; key: 填写上面准备好的 [API Key] action: upload 最后 enjoy!!!</p>
+</section>
+<footer class=entry-footer>2021-09-25&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to uPic图床配置-Chevereto" href=https://blog.mua.blue/2021-09/upic%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE-chevereto/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Chevereto图床安装
+</h2>
+</header>
+<section class=entry-content>
+<p>起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
+安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。
+方法2：nmtan/chevereto使用docker安装
+因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。
+nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。
+创建一个空目录，创建docker-compose.yml
+编写docker-compose.yml
+#docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private: 编写php....</p>
+</section>
+<footer class=entry-footer>2021-09-25&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to Chevereto图床安装" href=https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>图标跟随背景变色
+</h2>
+</header>
+<section class=entry-content>
+<p>起因 使用hugo的博客搭建好了，目前使用的是PaperMod主题，因为该主题自带图标比较少，我就自己上iconfont找了几个，但是我发现在黑夜模式下，图标不会像自带图标一样由黑变成白的。
+解决办法 例如：bilibili小电视图标
+白天模式： 黑夜模式：会看不清楚小电视。
+修改前的代码：
+&lt;svg t="1632470105372" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> &lt;path d="M386.327273 437.527273h-4.654546l-125.672727 27.927272c-18.618182 4.654545-27.927273 18.618182-23.272727 37.236364v9.309091c4.654545 13.963636 13.963636 23.272727 27.927272 23.272727h4.654546l130.327273-23.272727c18.618182-4.654545 27.927273-18.618182 23.272727-37.236364V465.454545c-4.654545-13.963636-18.618182-27.927273-32.581818-27.927272zM414.254545 605.090909c-9.309091 0-18.618182 9.309091-18.618181 18.618182 0 18.618182 4.654545 37.236364 18.618181 51.2 13.963636 18.618182 32.581818 23.272727 51.2 23.272727 18.618182 0 32.581818-4.654545 46.545455-18.618182h9.309091c13.963636 13.963636 27.927273 18.618182 41.890909 18.618182 18.618182 0 27.927273-4.654545 41.890909-9.309091 23.272727-18.618182 32.581818-41.890909 32.581818-69.818182 0-4.654545 0-4.654545-4.654545-9.30909-9.309091-4.654545-13.963636-4.654545-23.272727-4.654546H605.090909c-9.309091 0-13.963636 9....</p>
+</section>
+<footer class=entry-footer>2021-09-24&nbsp;·&nbsp;2 分钟</footer>
+<a class=entry-link aria-label="post link to 图标跟随背景变色" href=https://blog.mua.blue/2021-09/%E5%9B%BE%E6%A0%87%E8%B7%9F%E9%9A%8F%E8%83%8C%E6%99%AF%E5%8F%98%E8%89%B2/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Centos7正确安装docker/docker-compse
+</h2>
+</header>
+<section class=entry-content>
+<p>Centos7正确安装docker/docker-compse 安装docker yum -y update 先升级，yum有两个升级命令update和upgrade
+yum -y update：升级所有包同时，也升级软件和系统内核；
+yum -y upgrade：只升级所有包，不升级软件和系统内核，软件和内核保持原样。
+-y 代表着当安装包时询问你Is this OK[y/d/N]，就会自动选择y，不需要你再手动选择。
+出现Complete!即为更新完成
+yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.1相似结果即成功安装
+启动：sudo systemctl start docker
+设置开机启动：sudo systemctl enable docker
+安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
+$ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p>
+</section>
+<footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>宝塔取消登陆限制
 </h2>
 </header>
@@ -81,57 +150,6 @@ rm -f /www/server/panel/data/bind.pl 执行后就可以正常使用了。</p>
 </section>
 <footer class=entry-footer>2021-09-22&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to 宝塔取消登陆限制" href=https://blog.mua.blue/2021-09/%E5%AE%9D%E5%A1%94%E5%8F%96%E6%B6%88%E7%99%BB%E9%99%86%E9%99%90%E5%88%B6/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>linux后台运行脚本
-</h2>
-</header>
-<section class=entry-content>
-<p>linux后台运行脚本 运行 nohup command > run.log 2>&1 & 将标准错误2重定向到标准输出**&1**，标准输出**&1**再被重定向输入到**run.log**文件中。最后一个&代表后台运行的意思。 **nohup**英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
-ps:在执行python脚本时最好加上-u参数，-u 代表程序不启用缓存，也就是把输出直接放到log中，没这个参数的话，log文件的生成会有延迟。
-终止 如果没有关闭当前终端jobs -l查看进程，如果关闭了当前终端还想查看ps -aux|grep 需查找的
-最后使用 kill -9 pid来杀死进程
--9为强制杀死进程
-</p>
-</section>
-<footer class=entry-footer>2021-09-19&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to linux后台运行脚本" href=https://blog.mua.blue/2021-09/linux%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>Mac禁用谷歌浏览器自动更新
-</h2>
-</header>
-<section class=entry-content>
-<p>原文 From reading Chrome is Bad, it seems in some situations the updater (also known as keystone) can chew up CPU cycles. Whilst I’m not 100% convinced keystone continuously chews CPU, its launchctl configuration suggests it runs at least once an hour. Given I don’t use Chrome as my main browser, this is undesirable behaviour for me.
-With that in mind, I’ve decided to disable the background services rather than delete Chrome entirely....</p>
-</section>
-<footer class=entry-footer>2021-09-16&nbsp;·&nbsp;2 分钟</footer>
-<a class=entry-link aria-label="post link to Mac禁用谷歌浏览器自动更新" href=https://blog.mua.blue/2021-09/mac%E7%A6%81%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>mac使用homebrew安装jdk
-</h2>
-</header>
-<section class=entry-content>
-<p>Homebrew安装jdk 因为电脑上没有jdk需要安装一个，首先去homebrew仓库里搜索jdk但是很奇怪，感觉都不是官方的。于是我去百度搜索，找到这个命令
-brew cask install homebrew/cask-versions/adoptopenjdk8 //但是无法使用，进行报错搜索后发现homebrew已经丢弃这种用法 //目前正确用法 brew install --cask homebrew/cask-versions/adoptopenjdk8 如果下载速度比较慢挂个终端代理就好。</p>
-</section>
-<footer class=entry-footer>2021-09-11&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to mac使用homebrew安装jdk" href=https://blog.mua.blue/2021-09/mac%E4%BD%BF%E7%94%A8homebrew%E5%AE%89%E8%A3%85jdk/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>shadowrocket ios下载
-</h2>
-</header>
-<section class=entry-content>
-<p>在网上找了很久都没有发现可以登录的共享账号，还险些去购买了了一个共享账号。还好在谷歌上找到一个网站，里面的账号可以用，看着也很靠谱。Get Shadowrocket</p>
-</section>
-<footer class=entry-footer>2021-09-10&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to shadowrocket ios下载" href=https://blog.mua.blue/2021-09/shadowrocket-ios%E4%B8%8B%E8%BD%BD/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
