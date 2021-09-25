@@ -1,5 +1,7 @@
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
+    <span><a href="https://beian.miit.gov.cn">鄂ICP备2021014854号-1</a></span><br>
+    <span id="busuanzi_container_site_pv">PV:<span id="busuanzi_value_site_pv"></span>&nbsp:)</span><br>
     {{- if .Site.Copyright }}
     <span>{{ .Site.Copyright | markdownify }}</span>
     {{- else }}
@@ -10,6 +12,7 @@
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
     </span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </footer>
 {{- end }}
 
