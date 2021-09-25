@@ -2,6 +2,7 @@
 title: "Centos7正确安装docker/docker-compse"
 date: 2021-09-23T16:11:53+08:00
 draft: false
+tags: ['2021-09','tech']
 ---
 # Centos7正确安装docker/docker-compse
 

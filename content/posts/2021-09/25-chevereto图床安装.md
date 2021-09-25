@@ -2,6 +2,7 @@
 title: "Chevereto图床安装"
 date: 2021-09-25T18:23:24+08:00
 draft: false
+tags: ['2021-09','tech']
 ---
 
 ## 起因
