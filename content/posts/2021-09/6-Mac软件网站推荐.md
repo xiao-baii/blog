@@ -5,11 +5,20 @@ draft: false
 tags: ['good_site','2021-09']
 ---
 ## Mac软件网站推荐
-* [MacWk][1] 页面很好看，看着很可靠，可惜有一些软件因为版权原因下架了。
-* [Digit77][2] 软件很全，可惜网盘都比较慢。
-* [网站大全][3] 7-3里有很多Mac破解软件的网站
+| 名称          | ©️原因下架 | 速度         | 特点                                                         |
+| ------------- | --------- | ------------ | ------------------------------------------------------------ |
+| [MacWk][1]    | 比较多    | 快           | 页面好看，深受大众好评，看着靠谱                             |
+| [Digit77][2]  | 没发现    | 慢           | 搜索引擎搜起来有点慢                                         |
+| [Macbed][4]   | 没发现    | 慢           | 国外网站                                                     |
+| [TNT TEAM][5] | 没发现    | 快           | 看着新开的网站，并不是tnt team开的，但是是搬运tnt team的软件。 |
+| [Macenjoy][6] | 比较少    | 慢(开会员快) | 下架的可以通过开通会员下载。                                 |
 
+* [国内的差不多都在这7-3][3] 
 
-  [1]: https://macwk.com
-  [2]: https://www.digit77.com
-  [3]: https://axutongxue.com
+[1]: https://macwk.com
+[2]: https://www.digit77.com
+[3]: https://axutongxue.com
+[4]:https://www.macbed.com
+[5]:http://www.imactnt.com
+[6]:https://www.macenjoy.co
+
