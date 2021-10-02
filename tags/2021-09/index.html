@@ -81,11 +81,7 @@ brew install --cask upic 手动:
 配置uPic 参数:
 API 地址: 填写上面准备好的 [上传服务地址] 请求方式: POST 使用 Base64: 勾选 文件字段名: source URL 路径: 上传完成后获取图片链接的路径。['image', 'url'] Content-Type: multipart/form-data; charset=utf-8; key: 填写上面准备好的 [API Key] action: upload 最后 enjoy!!!</p>
 </section>
-<footer class=entry-footer>2021-09-25&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;
-<span id=busuanzi_container_page_pv>
-Read:<span id=busuanzi_value_page_pv></span>
-</span>
-</footer>
+<footer class=entry-footer>2021-09-25&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to uPic图床配置-Chevereto" href=https://blog.mua.blue/2021-09/upic%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE-chevereto/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -103,11 +99,7 @@ nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以
 编写docker-compose.yml
 #docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private: 编写php....</p>
 </section>
-<footer class=entry-footer>2021-09-25&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;
-<span id=busuanzi_container_page_pv>
-Read:<span id=busuanzi_value_page_pv></span>
-</span>
-</footer>
+<footer class=entry-footer>2021-09-25&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to Chevereto图床安装" href=https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -122,11 +114,7 @@ Read:<span id=busuanzi_value_page_pv></span>
 修改前的代码：
 &lt;svg t="1632470105372" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> &lt;path d="M386.327273 437.527273h-4.654546l-125.672727 27.927272c-18.618182 4.654545-27.927273 18.618182-23.272727 37.236364v9.309091c4.654545 13.963636 13.963636 23.272727 27.927272 23.272727h4.654546l130.327273-23.272727c18.618182-4.654545 27.927273-18.618182 23.272727-37.236364V465.454545c-4.654545-13.963636-18.618182-27.927273-32.581818-27.927272zM414.254545 605.090909c-9.309091 0-18.618182 9.309091-18.618181 18.618182 0 18.618182 4.654545 37.236364 18.618181 51.2 13.963636 18.618182 32.581818 23.272727 51.2 23.272727 18.618182 0 32.581818-4.654545 46.545455-18.618182h9.309091c13.963636 13.963636 27.927273 18.618182 41.890909 18.618182 18.618182 0 27.927273-4.654545 41.890909-9.309091 23.272727-18.618182 32.581818-41.890909 32.581818-69.818182 0-4.654545 0-4.654545-4.654545-9.30909-9.309091-4.654545-13.963636-4.654545-23.272727-4.654546H605.090909c-9.309091 0-13.963636 9....</p>
 </section>
-<footer class=entry-footer>2021-09-24&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;
-<span id=busuanzi_container_page_pv>
-Read:<span id=busuanzi_value_page_pv></span>
-</span>
-</footer>
+<footer class=entry-footer>2021-09-24&nbsp;·&nbsp;2 分钟</footer>
 <a class=entry-link aria-label="post link to 图标跟随背景变色" href=https://blog.mua.blue/2021-09/%E5%9B%BE%E6%A0%87%E8%B7%9F%E9%9A%8F%E8%83%8C%E6%99%AF%E5%8F%98%E8%89%B2/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -146,11 +134,7 @@ yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.
 安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
 $ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p>
 </section>
-<footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;
-<span id=busuanzi_container_page_pv>
-Read:<span id=busuanzi_value_page_pv></span>
-</span>
-</footer>
+<footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -164,11 +148,7 @@ Read:<span id=busuanzi_value_page_pv></span>
 简单粗暴
 rm -f /www/server/panel/data/bind.pl 执行后就可以正常使用了。</p>
 </section>
-<footer class=entry-footer>2021-09-22&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;
-<span id=busuanzi_container_page_pv>
-Read:<span id=busuanzi_value_page_pv></span>
-</span>
-</footer>
+<footer class=entry-footer>2021-09-22&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to 宝塔取消登陆限制" href=https://blog.mua.blue/2021-09/%E5%AE%9D%E5%A1%94%E5%8F%96%E6%B6%88%E7%99%BB%E9%99%86%E9%99%90%E5%88%B6/></a>
 </article>
 <footer class=page-footer>
@@ -179,14 +159,14 @@ Read:<span id=busuanzi_value_page_pv></span>
 </main>
 <footer class=footer>
 <span><a href=https://beian.miit.gov.cn>鄂ICP备2021014854号-1</a></span><br>
-<span id=busuanzi_container_site_pv>PV:<span id=busuanzi_value_site_pv></span>&nbsp;:)</span><br>
 <span>&copy; 2021 <a href=https://blog.mua.blue>Bai</a></span>
 <span>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
 </span>
-<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NQP56SMP68')</script>
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
