@@ -2,6 +2,7 @@
 title: "利用Chrome的Console功能循环js函数"
 date: 2021-09-27T21:03:07+08:00
 draft: false
+tags: ['2021-09','tech']
 ---
 
 ## 代码
