@@ -26,7 +26,10 @@ ps:在执行python脚本时最好加上-u参数，-u 代表程序不启用缓存
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript><meta property="og:title" content="linux后台运行脚本">
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NQP56SMP68')</script>
+<meta property="og:title" content="linux后台运行脚本">
 <meta property="og:description" content="linux后台运行脚本  运行  nohup command > run.log 2>&1 & 将标准错误2重定向到标准输出**&1**，标准输出**&1**再被重定向输入到**run.log**文件中。最后一个&代表后台运行的意思。 **nohup**英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
 ps:在执行python脚本时最好加上-u参数，-u 代表程序不启用缓存，也就是把输出直接放到log中，没这个参数的话，log文件的生成会有延迟。
 终止  如果没有关闭当前终端jobs -l查看进程，如果关闭了当前终端还想查看ps -aux|grep 需查找的
@@ -151,8 +154,6 @@ Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
 </span>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NQP56SMP68')</script>
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>

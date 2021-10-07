@@ -21,7 +21,10 @@
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript><meta property="og:title" content="tech">
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NQP56SMP68')</script>
+<meta property="og:title" content="tech">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://blog.mua.blue/tags/tech/">
@@ -68,6 +71,19 @@
 <header class=page-header>
 <h1>tech</h1>
 </header>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>利用Chrome的Console功能循环js函数
+</h2>
+</header>
+<section class=entry-content>
+<p>代码 var autoTouch = setInterval(function(){ save(); },2000); autoTouch; 每两秒就会执行一次sava()函数。
+setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。</p>
+</section>
+<footer class=entry-footer>2021-09-27&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to 利用Chrome的Console功能循环js函数" href=https://blog.mua.blue/2021-09/%E5%88%A9%E7%94%A8chrome%E7%9A%84console%E5%8A%9F%E8%83%BD%E5%BE%AA%E7%8E%AFjs%E5%87%BD%E6%95%B0/></a>
+</article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>uPic图床配置-Chevereto
@@ -137,20 +153,6 @@ $ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --
 <footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a>
 </article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>宝塔取消登陆限制
-</h2>
-</header>
-<section class=entry-content>
-<p>宝塔取消登陆限制 现在宝塔面板好恶心，安装完毕之后必须登录账号，否则无法进入面板进行操作。
-于是我上网上找了一些取消限制的方法，有很多方法都失效了，没办法使用，还会造成面板异常。
-简单粗暴
-rm -f /www/server/panel/data/bind.pl 执行后就可以正常使用了。</p>
-</section>
-<footer class=entry-footer>2021-09-22&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to 宝塔取消登陆限制" href=https://blog.mua.blue/2021-09/%E5%AE%9D%E5%A1%94%E5%8F%96%E6%B6%88%E7%99%BB%E9%99%86%E9%99%90%E5%88%B6/></a>
-</article>
 <footer class=page-footer>
 <nav class=pagination>
 <a class=next href=https://blog.mua.blue/tags/tech/page/2/>下一页 »</a>
@@ -165,8 +167,6 @@ Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
 </span>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NQP56SMP68')</script>
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
