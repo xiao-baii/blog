@@ -74,6 +74,26 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Centos7正确安装docker/docker-compse
+</h2>
+</header>
+<section class=entry-content>
+<p>Centos7正确安装docker/docker-compse 安装docker yum -y update 先升级，yum有两个升级命令update和upgrade
+yum -y update：升级所有包同时，也升级软件和系统内核；
+yum -y upgrade：只升级所有包，不升级软件和系统内核，软件和内核保持原样。
+-y 代表着当安装包时询问你Is this OK[y/d/N]，就会自动选择y，不需要你再手动选择。
+出现Complete!即为更新完成
+yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.1相似结果即成功安装
+启动：sudo systemctl start docker
+设置开机启动：sudo systemctl enable docker
+安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
+$ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p>
+</section>
+<footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>宝塔取消登陆限制
 </h2>
 </header>
@@ -125,17 +145,6 @@ brew cask install homebrew/cask-versions/adoptopenjdk8 //但是无法使用，�
 </section>
 <footer class=entry-footer>2021-09-11&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to mac使用homebrew安装jdk" href=https://blog.mua.blue/2021-09/mac%E4%BD%BF%E7%94%A8homebrew%E5%AE%89%E8%A3%85jdk/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>shadowrocket ios下载
-</h2>
-</header>
-<section class=entry-content>
-<p>在网上找了很久都没有发现可以登录的共享账号，还险些去购买了了一个共享账号。还好在谷歌上找到一个网站，里面的账号可以用，看着也很靠谱。Get Shadowrocket</p>
-</section>
-<footer class=entry-footer>2021-09-10&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to shadowrocket ios下载" href=https://blog.mua.blue/2021-09/shadowrocket-ios%E4%B8%8B%E8%BD%BD/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
