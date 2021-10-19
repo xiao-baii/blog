@@ -73,6 +73,26 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>Centos7正确安装docker/docker-compse
+</h2>
+</header>
+<section class=entry-content>
+<p>Centos7正确安装docker/docker-compse 安装docker yum -y update 先升级，yum有两个升级命令update和upgrade
+yum -y update：升级所有包同时，也升级软件和系统内核；
+yum -y upgrade：只升级所有包，不升级软件和系统内核，软件和内核保持原样。
+-y 代表着当安装包时询问你Is this OK[y/d/N]，就会自动选择y，不需要你再手动选择。
+出现Complete!即为更新完成
+yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.1相似结果即成功安装
+启动：sudo systemctl start docker
+设置开机启动：sudo systemctl enable docker
+安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
+$ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p>
+</section>
+<footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>宝塔取消登陆限制
 </h2>
 </header>
@@ -125,20 +145,10 @@ brew cask install homebrew/cask-versions/adoptopenjdk8 //但是无法使用，�
 <footer class=entry-footer>2021-09-11&nbsp;·&nbsp;1 分钟</footer>
 <a class=entry-link aria-label="post link to mac使用homebrew安装jdk" href=https://blog.mua.blue/2021-09/mac%E4%BD%BF%E7%94%A8homebrew%E5%AE%89%E8%A3%85jdk/></a>
 </article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>Mac下Git上传本地项目到Github
-</h2>
-</header>
-<section class=entry-content>
-<p>因为我的电脑是Macbook2020 M1自带了git，所以不需要进行下载操作。安装应该也很简单，使用brew install git即可。配置参考如何使用Git上传本地项目到github(mac版)，如果以后需要在一个电脑使用多个Git账户可以参考Mac多个Git账户配置</p>
-</section>
-<footer class=entry-footer>2021-09-10&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to Mac下Git上传本地项目到Github" href=https://blog.mua.blue/2021-09/mac%E4%B8%8Bgit%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E5%88%B0github/></a>
-</article>
 <footer class=page-footer>
 <nav class=pagination>
 <a class=prev href=https://blog.mua.blue/tags/tech/>« 上一页</a>
+<a class=next href=https://blog.mua.blue/tags/tech/page/3/>下一页 »</a>
 </nav>
 </footer>
 </main>

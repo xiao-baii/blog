@@ -91,6 +91,27 @@
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Mac安装nvm
+</h2>
+</header>
+<section class=entry-content>
+<p>安装 使用brew brew install nvm
+touch ~/.zshrc或其他shell配置
+添加
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm 安装完成！
+自行安装 打开终端
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+如果出现如下问题，请挂代理后重试
+执行完毕后输入nvm --version即可查看到当前版本
+如果出现nvm: command not found，可照着官方给出的方法解决
+根据自己默认shell创建一个配置文件，比如我使用的是zsh，则touch ~/.zshrc 再次运行安装命令 安装完成！
+用法 要下载、编译和安装最新版本的节点...</p>
+</section>
+<footer class=entry-footer>2021-10-19&nbsp;·&nbsp;1 分钟</footer>
+<a class=entry-link aria-label="post link to Mac安装nvm" href=https://blog.mua.blue/2021-10/mac%E5%AE%89%E8%A3%85nvm/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>利用Chrome的Console功能循环js函数
 </h2>
 </header>
@@ -150,26 +171,6 @@ nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以
 </section>
 <footer class=entry-footer>2021-09-24&nbsp;·&nbsp;2 分钟</footer>
 <a class=entry-link aria-label="post link to 图标跟随背景变色" href=https://blog.mua.blue/2021-09/%E5%9B%BE%E6%A0%87%E8%B7%9F%E9%9A%8F%E8%83%8C%E6%99%AF%E5%8F%98%E8%89%B2/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Centos7正确安装docker/docker-compse
-</h2>
-</header>
-<section class=entry-content>
-<p>Centos7正确安装docker/docker-compse 安装docker yum -y update 先升级，yum有两个升级命令update和upgrade
-yum -y update：升级所有包同时，也升级软件和系统内核；
-yum -y upgrade：只升级所有包，不升级软件和系统内核，软件和内核保持原样。
--y 代表着当安装包时询问你Is this OK[y/d/N]，就会自动选择y，不需要你再手动选择。
-出现Complete!即为更新完成
-yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.1相似结果即成功安装
-启动：sudo systemctl start docker
-设置开机启动：sudo systemctl enable docker
-安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
-$ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p>
-</section>
-<footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer>
-<a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
