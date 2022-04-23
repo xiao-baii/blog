@@ -4,8 +4,8 @@ date: 2021-09-19T11:50:46+08:00
 tags: ['2021-09','tech']
 ---
 
+# linux后台运行脚本
 
-## linux后台运行脚本
 1. 运行
 ```
 nohup command > run.log 2>&1 &
