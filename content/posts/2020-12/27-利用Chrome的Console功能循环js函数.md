@@ -1,8 +1,8 @@
 ---
 title: "利用Chrome的Console功能循环js函数"
-date: 2021-09-27T21:03:07+08:00
+date: 2020-12-27T21:03:07+08:00
 draft: false
-tags: ['2021-09','tech']
+tags: ['2021-12','tech']
 ---
 
 ## 代码
