@@ -1,8 +1,8 @@
 ---
 title: "Centos7正确安装docker/docker-compse"
-date: 2021-09-23T16:11:53+08:00
+date: 2021-08-23T16:11:53+08:00
 draft: false
-tags: ['2021-09','tech']
+tags: ['2021-08','tech']
 ---
 # Centos7正确安装docker/docker-compse
 
@@ -78,5 +78,4 @@ tags: ['2021-09','tech']
 
    1. `systemctl stop docker`
    2. `systemctl start docker`
-
 

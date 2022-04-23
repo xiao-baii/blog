@@ -1,8 +1,8 @@
 ---
 title: "uPic图床配置-Chevereto"
-date: 2021-09-25T18:23:45+08:00
+date: 2021-06-25T18:23:45+08:00
 draft: false
-tags: ['2021-09','tech']
+tags: ['2021-06','tech']
 ---
 ## 安装uPic
 
