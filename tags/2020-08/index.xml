@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>2020-08 on Bai</title><link>https://blog.mua.blue/tags/2020-08/</link><description>Recent content in 2020-08 on Bai</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 21 Aug 2020 14:28:37 +0800</lastBuildDate><atom:link href="https://blog.mua.blue/tags/2020-08/index.xml" rel="self" type="application/rss+xml"/><item><title>封禁ip后解决办法</title><link>https://blog.mua.blue/2020-08/%E5%B0%81%E7%A6%81ip%E5%90%8E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link><pubDate>Fri, 21 Aug 2020 14:28:37 +0800</pubDate><guid>https://blog.mua.blue/2020-08/%E5%B0%81%E7%A6%81ip%E5%90%8E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid><description>问题原因 因为昨天使用阿里云进行学习通自动签到发现出错，，报错为没有权限访问http://mooc1-api.xxx.com这个域名，但我使用自己电脑时却可以正常访问，于是进行问题的排除，我认为发生这个原因有两种可能
+程序问题 ip问题 解决方法 起初我使用的是数据库访问获取cookie，于是我自行进入网站获取cookie在自己电脑测试可以访问后使用服务器访问，结果还是出错，然后我看见python版本不一样，我使用pyenv将版本切换成python3.7后运行发现还是出错。这样就只能认为是第二个ip问题，我在网上寻找了requests代理方法，没想到挺简单的只需要：
+proxy = { &amp;#39;http&amp;#39;: &amp;#39;http://xxx.xxx.xxx.xxx:8888&amp;#39;, #也可以https访问 &amp;#39;https&amp;#39;:&amp;#39;http://xxx.xxx.xxx.xxx:8888&amp;#39; } requests.get(url,proxies=proxy) 在https://www.xicidaili.com/nn/里找了一个ip进行尝试，结果成功了。这就可以确定是阿里云的ip被学习通封了。于是我开始思考如何找到一个靠谱的ip代理，因为网上的免费ip代理都比较不安全，可能会造成你发送的信息泄露，如果是正常的爬虫等等可以使用这种，但如果是发送一些信息可能会被不法分子利用。
+突然想到自己在腾讯云有一个学生机，先在服务器上运行了一下代码，运行成功，说明没有封禁该ip，只要这需要将该服务器做成代理服务器就可以成功运行了。在网上一番寻找发现了tinyproxy，但是大多都是基于centos的教程，而我使用的是ubuntu，弄了一晚上都没成功，第二天中午又找到一个教程，终于成功了。
+tinyproxy安装步骤 先将腾讯云初始用户名ubuntu改为root 官方教程
+安装tinyproxy
+sudo apt-get update apt-get install tinyproxy 配置参数文件
+这个是一个坑&amp;hellip;.很多教程都是vim /etc/tinyproxy/tinyproxy.conf使用命令之后里面是空白的，而且无法修改，修改会提示没有权限。我就纳闷了，于是我上网搜了一下，看见有一个老哥说有可能是没有这个文件，我看了一下，真的没有&amp;hellip;实际命令应该是vim /etc/tinyproxy.conf
+修改两部分即可
+Port 8888 #预设是8888端口 Allow 127.0.0.1 #将127.0.0.1改成你自己的IP，只有这个IP才能连接，前面打#注释掉则所有人都可以连接 tinyproxy打开与关闭
+运行 sudo service tinyproxy start 重启 sudo service tinyproxy restart 停止 sudo service tinyproxy stop 这样我就可以使用阿里云服务器运行了。
+参考链接 https://blog.csdn.net/qq_18483627/article/details/81051486?depth_1-utm_source=distribute.pc_relevant.none-task&amp;amp;utm_source=distribute.pc_relevant.none-task</description></item></channel></rss>

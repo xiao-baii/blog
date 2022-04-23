@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>2021-02 on Bai</title><link>https://blog.mua.blue/tags/2021-02/</link><description>Recent content in 2021-02 on Bai</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 13 Feb 2021 14:28:37 +0800</lastBuildDate><atom:link href="https://blog.mua.blue/tags/2021-02/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux定时任务</title><link>https://blog.mua.blue/2021-02/linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link><pubDate>Sat, 13 Feb 2021 14:28:37 +0800</pubDate><guid>https://blog.mua.blue/2021-02/linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid><description>定时任务 因为今天写了一个学习通自动签到服务需要部署到centos服务器下，这里我就要啰嗦一下，开始服务器使用的是ubuntu系统，结果使用网上的部署flask教程部署不成功，还是我太菜了，网上的教程也都是一个模(mu)子刻出来的，于是我只能换成centos系统了，因为宝塔面板里的python一键部署工具只支持centos。
+部署完成后就是让任务每隔多久执行一次了，从百度上找到Linux自带的Crontab，看了一下觉得已经可以解决绝大部分定时问题了。
+配置文件中的每一行具有六个栏位，这六个栏位的意义为:
+意义 分钟 小时 日期 月份 星期 命令 范围 0-59 0-23 1-31 1-12 0-7 command 其中星期取值为0和7时均代表星期日.
+前五栏除了可以取上表中的这些值外,还可以取下面这些特殊参数:
+***** 取值范围内的所有数字 / 每过多少个数字 - 从X到Z **，**散列数字 crontab [-u username]　//省略用户表表示操作当前用户的crontab -e (编辑工作表) -l (列出工作表里的命令) -r (删除工作) 例如我需要在星期一到星期五早上八点到下午十点每三分钟执行一次
+*/3 8-12 * * 1-5 python /www/wwwroot/xuexi/sign1.py */3 14-22 * * 1-5 python /www/wwwroot/xuexi/sign1.py 错误纠正
+在星期一到星期五早上八点到下午十点每三分钟执行一次应该是
+*/5 8-11 * * 1-5 python /www/wwwroot/xuexi/sign1.</description></item></channel></rss>
