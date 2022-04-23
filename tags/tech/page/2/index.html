@@ -9,16 +9,31 @@ yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.
 启动：sudo systemctl start docker
 设置开机启动：sudo systemctl enable docker
 安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
-$ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p></section><footer class=entry-footer>2021-09-23&nbsp;·&nbsp;1 分钟</footer><a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-09/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>宝塔取消登陆限制</h2></header><section class=entry-content><p>宝塔取消登陆限制 现在宝塔面板好恶心，安装完毕之后必须登录账号，否则无法进入面板进行操作。
-于是我上网上找了一些取消限制的方法，有很多方法都失效了，没办法使用，还会造成面板异常。
-简单粗暴
-rm -f /www/server/panel/data/bind.pl 执行后就可以正常使用了。</p></section><footer class=entry-footer>2021-09-22&nbsp;·&nbsp;1 分钟</footer><a class=entry-link aria-label="post link to 宝塔取消登陆限制" href=https://blog.mua.blue/2021-09/%E5%AE%9D%E5%A1%94%E5%8F%96%E6%B6%88%E7%99%BB%E9%99%86%E9%99%90%E5%88%B6/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>linux后台运行脚本</h2></header><section class=entry-content><p>linux后台运行脚本 运行 nohup command > run.log 2>&1 & 将标准错误2重定向到标准输出**&1**，标准输出**&1再被重定向输入到run.log**文件中。最后一个&代表后台运行的意思。 nohup英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
+$ docker-compose up Building tomcat unknown flag: --iidfile See 'docker build --help'....</p></section><footer class=entry-footer>2021-08-23</footer><a class=entry-link aria-label="post link to Centos7正确安装docker/docker-compse" href=https://blog.mua.blue/2021-08/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>uPic图床配置-Chevereto</h2></header><section class=entry-content><p>安装uPic Homebrew:
+brew install --cask upic 手动:
+前往作者的Github下载。
+具体功能可以查看作者博客
+配置uPic 参数:
+API 地址: 填写上面准备好的 [上传服务地址] 请求方式: POST 使用 Base64: 勾选 文件字段名: source URL 路径: 上传完成后获取图片链接的路径。['image', 'url'] Content-Type: multipart/form-data; charset=utf-8; key: 填写上面准备好的 [API Key] action: upload 最后 enjoy!!!</p></section><footer class=entry-footer>2021-06-25</footer><a class=entry-link aria-label="post link to uPic图床配置-Chevereto" href=https://blog.mua.blue/2021-06/upic%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE-chevereto/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Chevereto图床安装</h2></header><section class=entry-content><p>起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
+安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。
+方法2：nmtan/chevereto使用docker安装
+因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。
+nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。
+创建一个空目录，创建docker-compose.yml
+编写docker-compose.yml
+#docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ....</p></section><footer class=entry-footer>2021-06-25</footer><a class=entry-link aria-label="post link to Chevereto图床安装" href=https://blog.mua.blue/2021-06/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>linux后台运行脚本</h2></header><section class=entry-content><p>运行 nohup command > run.log 2>&1 & 将标准错误2重定向到标准输出**&1**，标准输出**&1再被重定向输入到run.log**文件中。最后一个&代表后台运行的意思。 nohup英文全称 no hang up（不挂起），用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。
 ps:在执行python脚本时最好加上-u参数，-u 代表程序不启用缓存，也就是把输出直接放到log中，没这个参数的话，log文件的生成会有延迟。
 终止 如果没有关闭当前终端jobs -l查看进程，如果关闭了当前终端还想查看ps -aux|grep 需查找的
 最后使用 kill -9 pid来杀死进程
--9为强制杀死进程</p></section><footer class=entry-footer>2021-09-19&nbsp;·&nbsp;1 分钟</footer><a class=entry-link aria-label="post link to linux后台运行脚本" href=https://blog.mua.blue/2021-09/linux%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Mac禁用谷歌浏览器自动更新</h2></header><section class=entry-content><p>原文 From reading Chrome is Bad, it seems in some situations the updater (also known as keystone) can chew up CPU cycles. Whilst I’m not 100% convinced keystone continuously chews CPU, its launchctl configuration suggests it runs at least once an hour. Given I don’t use Chrome as my main browser, this is undesirable behaviour for me.
-With that in mind, I’ve decided to disable the background services rather than delete Chrome entirely....</p></section><footer class=entry-footer>2021-09-16&nbsp;·&nbsp;2 分钟</footer><a class=entry-link aria-label="post link to Mac禁用谷歌浏览器自动更新" href=https://blog.mua.blue/2021-09/mac%E7%A6%81%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>mac使用homebrew安装jdk</h2></header><section class=entry-content><p>Homebrew安装jdk 因为电脑上没有jdk需要安装一个，首先去homebrew仓库里搜索jdk但是很奇怪，感觉都不是官方的。于是我去百度搜索，找到这个命令
-brew cask install homebrew/cask-versions/adoptopenjdk8 //但是无法使用，进行报错搜索后发现homebrew已经丢弃这种用法 //目前正确用法 brew install --cask homebrew/cask-versions/adoptopenjdk8 如果下载速度比较慢挂个终端代理就好。</p></section><footer class=entry-footer>2021-09-11&nbsp;·&nbsp;1 分钟</footer><a class=entry-link aria-label="post link to mac使用homebrew安装jdk" href=https://blog.mua.blue/2021-09/mac%E4%BD%BF%E7%94%A8homebrew%E5%AE%89%E8%A3%85jdk/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://blog.mua.blue/tags/tech/>« 上一页</a>
+-9为强制杀死进程</p></section><footer class=entry-footer>2021-03-19</footer><a class=entry-link aria-label="post link to linux后台运行脚本" href=https://blog.mua.blue/2021-03/linux%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Linux定时任务</h2></header><section class=entry-content><p>定时任务 因为今天写了一个学习通自动签到服务需要部署到centos服务器下，这里我就要啰嗦一下，开始服务器使用的是ubuntu系统，结果使用网上的部署flask教程部署不成功，还是我太菜了，网上的教程也都是一个模(mu)子刻出来的，于是我只能换成centos系统了，因为宝塔面板里的python一键部署工具只支持centos。
+部署完成后就是让任务每隔多久执行一次了，从百度上找到Linux自带的Crontab，看了一下觉得已经可以解决绝大部分定时问题了。
+配置文件中的每一行具有六个栏位，这六个栏位的意义为:
+意义 分钟 小时 日期 月份 星期 命令 范围 0-59 0-23 1-31 1-12 0-7 command 其中星期取值为0和7时均代表星期日.
+前五栏除了可以取上表中的这些值外,还可以取下面这些特殊参数:
+***** 取值范围内的所有数字 / 每过多少个数字 - 从X到Z **，**散列数字 crontab [-u username]　//省略用户表表示操作当前用户的crontab -e (编辑工作表) -l (列出工作表里的命令) -r (删除工作) 例如我需要在星期一到星期五早上八点到下午十点每三分钟执行一次
+*/3 8-12 * * 1-5 python /www/wwwroot/xuexi/sign1.py */3 14-22 * * 1-5 python /www/wwwroot/xuexi/sign1.py 错误纠正
+在星期一到星期五早上八点到下午十点每三分钟执行一次应该是
+*/5 8-11 * * 1-5 python /www/wwwroot/xuexi/sign1....</p></section><footer class=entry-footer>2021-02-13</footer><a class=entry-link aria-label="post link to Linux定时任务" href=https://blog.mua.blue/2021-02/linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://blog.mua.blue/tags/tech/>« 上一页</a>
 <a class=next href=https://blog.mua.blue/tags/tech/page/3/>下一页 »</a></nav></footer></main><footer class=footer><span><a href=https://beian.miit.gov.cn>鄂ICP备2021014854号-1</a></span><br><span>&copy; 2022 <a href=https://blog.mua.blue>Bai</a></span>
 <span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
