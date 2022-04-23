@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>2021-08 on Bai</title><link>https://blog.mua.blue/tags/2021-08/</link><description>Recent content in 2021-08 on Bai</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 23 Aug 2021 16:11:53 +0800</lastBuildDate><atom:link href="https://blog.mua.blue/tags/2021-08/index.xml" rel="self" type="application/rss+xml"/><item><title>Centos7正确安装docker/docker-compse</title><link>https://blog.mua.blue/2021-08/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/</link><pubDate>Mon, 23 Aug 2021 16:11:53 +0800</pubDate><guid>https://blog.mua.blue/2021-08/centos7%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85docker/docker-compse/</guid><description>Centos7正确安装docker/docker-compse 安装docker yum -y update 先升级，yum有两个升级命令update和upgrade
+yum -y update：升级所有包同时，也升级软件和系统内核；
+yum -y upgrade：只升级所有包，不升级软件和系统内核，软件和内核保持原样。
+-y 代表着当安装包时询问你Is this OK[y/d/N]，就会自动选择y，不需要你再手动选择。
+出现Complete!即为更新完成
+yum -y install docker docker -v 出现Docker version 1.13.1, build 7d71120/1.13.1相似结果即成功安装
+启动：sudo systemctl start docker
+设置开机启动：sudo systemctl enable docker
+安装docker-compose pip3 install --upgrade pip #加上--upgrade为升级包而不是安装包 pip3 install docker-compose 而我在最新版本启动docker-compose报错
+$ docker-compose up Building tomcat unknown flag: --iidfile See &amp;#39;docker build --help&amp;#39;.</description></item></channel></rss>
