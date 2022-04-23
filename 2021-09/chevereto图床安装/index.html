@@ -1,268 +1,84 @@
-<!doctype html><html lang=zh dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>Chevereto图床安装 | Bai</title>
-<meta name=keywords content="2021-09,tech">
-<meta name=description content="起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
+<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Chevereto图床安装 | Bai</title><meta name=keywords content="2021-09,tech"><meta name=description content="起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
 安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。
 方法2：nmtan/chevereto使用docker安装
 因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。
 nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。
   创建一个空目录，创建docker-compose.yml
   编写docker-compose.yml
-  #docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private:  编写php.">
-<meta name=author content>
-<link rel=canonical href=https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://blog.mua.blue/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://blog.mua.blue/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://blog.mua.blue/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://blog.mua.blue/apple-touch-icon.png>
-<link rel=mask-icon href=https://blog.mua.blue/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.88.1">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NQP56SMP68')</script>
-<meta property="og:title" content="Chevereto图床安装">
-<meta property="og:description" content="起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
+  #docker-compose.yml version: '3'  services:  db:  image: mariadb  volumes:  - ./database:/var/lib/mysql:rw  restart: always  networks:  - private  environment:  MYSQL_ROOT_PASSWORD: chevereto_root  MYSQL_DATABASE: chevereto  MYSQL_USER: chevereto  MYSQL_PASSWORD: chevereto   chevereto:  depends_on:  - db  image: nmtan/chevereto  restart: always  networks:  - private  environment:  CHEVERETO_DB_HOST: db  CHEVERETO_DB_USERNAME: chevereto  CHEVERETO_DB_PASSWORD: chevereto  CHEVERETO_DB_NAME: chevereto  CHEVERETO_DB_PREFIX: chv_  volumes:  - ."><meta name=author content><link rel=canonical href=https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/><link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://blog.mua.blue/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://blog.mua.blue/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://blog.mua.blue/favicon-32x32.png><link rel=apple-touch-icon href=https://blog.mua.blue/apple-touch-icon.png><link rel=mask-icon href=https://blog.mua.blue/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><meta name=generator content="Hugo 0.97.3"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-NQP56SMP68"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-NQP56SMP68")</script><meta property="og:title" content="Chevereto图床安装"><meta property="og:description" content="起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
 安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。
 方法2：nmtan/chevereto使用docker安装
 因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。
 nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。
   创建一个空目录，创建docker-compose.yml
   编写docker-compose.yml
-  #docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private:  编写php.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-09-25T18:23:24+08:00">
-<meta property="article:modified_time" content="2021-09-25T18:23:24+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Chevereto图床安装">
-<meta name=twitter:description content="起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
+  #docker-compose.yml version: '3'  services:  db:  image: mariadb  volumes:  - ./database:/var/lib/mysql:rw  restart: always  networks:  - private  environment:  MYSQL_ROOT_PASSWORD: chevereto_root  MYSQL_DATABASE: chevereto  MYSQL_USER: chevereto  MYSQL_PASSWORD: chevereto   chevereto:  depends_on:  - db  image: nmtan/chevereto  restart: always  networks:  - private  environment:  CHEVERETO_DB_HOST: db  CHEVERETO_DB_USERNAME: chevereto  CHEVERETO_DB_PASSWORD: chevereto  CHEVERETO_DB_NAME: chevereto  CHEVERETO_DB_PREFIX: chv_  volumes:  - ."><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-09-25T18:23:24+08:00"><meta property="article:modified_time" content="2021-09-25T18:23:24+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Chevereto图床安装"><meta name=twitter:description content="起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。
 安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。
 方法2：nmtan/chevereto使用docker安装
 因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。
 nmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。
   创建一个空目录，创建docker-compose.yml
   编写docker-compose.yml
-  #docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private:  编写php.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://blog.mua.blue/posts/"},{"@type":"ListItem","position":3,"name":"Chevereto图床安装","item":"https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Chevereto图床安装","name":"Chevereto图床安装","description":"起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。\n安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。\n方法2：nmtan/chevereto使用docker安装\n因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。\nnmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。\n  创建一个空目录，创建docker-compose.yml\n  编写docker-compose.yml\n  #docker-compose.yml version: \u0026#39;3\u0026#39; services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private:  编写php.","keywords":["2021-09","tech"],"articleBody":"起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。\n安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。\n方法2：nmtan/chevereto使用docker安装\n因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。\nnmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。\n  创建一个空目录，创建docker-compose.yml\n  编写docker-compose.yml\n  #docker-compose.yml version: '3' services: db: image: mariadb volumes: - ./database:/var/lib/mysql:rw restart: always networks: - private environment: MYSQL_ROOT_PASSWORD: chevereto_root MYSQL_DATABASE: chevereto MYSQL_USER: chevereto MYSQL_PASSWORD: chevereto chevereto: depends_on: - db image: nmtan/chevereto restart: always networks: - private environment: CHEVERETO_DB_HOST: db CHEVERETO_DB_USERNAME: chevereto CHEVERETO_DB_PASSWORD: chevereto CHEVERETO_DB_NAME: chevereto CHEVERETO_DB_PREFIX: chv_ volumes: - ./images:/var/www/html/images:rw - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制 ports: - 8004:80 networks: private:  编写php.ini  memory_limit = 256M; upload_max_filesize = 100M; post_max_size = 100M;   使用docker-compose up -d跑起来。\n  宝塔面板创建一个网站  配置反向代理  接着就可以打开网站进行安装，因为docker已经帮我们配置好了mysql和Chevereto之间的连接，我们只需要创建管理员账号。\n  **(可选)**登上管理员账号，打开仪表盘-设置-网站将https改为强加，紧接着我们来到宝塔面板给域名申请一个ssl证书，这样和网站传输的数据就会比较安全。\n  **(可选)**修改上传限制，打开仪表盘-设置-图片上传前提是前面用php.ini对php进行配置了。\n  enjoy!\n安装时踩的坑   没有在仪表盘配置好https协议，就申请好证书使用https协议进行访问，导致静态文件的链接还是http，浏览器报错不加载http协议的静态文件。其中有一个问题还是没有解决，开始我是根据nmtan/chevereto仓库里的高级配置。\n$val = getenv('CHEVERETO_HTTPS'); if ($val !== false) { /* * Specify whether user should connect to Chevereto via HTTPS instead of HTTP * Please note that Chevereto has excellent mechanism to detect this * already - https://github.com/Chevereto/Chevereto-Free/blob/0184f27a97daa55ec3b07560c5dd619d22abc907/lib/G/G.php#L113 * So 99% of the time you won't have to bother with this. The only * usecase that I can image where you need to set this is if you have * a misconfigured reverse proxy that somehow doesn't include the * `http-x-forwarded-proto` header into the forwarded requests */ $settings['https'] = strtolower(trim($val)) === 'true'; } 在docker-compose.yml里加了一个环境变量CHEVERETO_HTTPS:1可是没用。\n  修改上传限制，将php.ini配置好后还是限制为2M，后来发现原来chevereto里也要改。先改php限制再改chevereto限制。\n  ","wordCount":"185","inLanguage":"zh","datePublished":"2021-09-25T18:23:24+08:00","dateModified":"2021-09-25T18:23:24+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/"},"publisher":{"@type":"Organization","name":"Bai","logo":{"@type":"ImageObject","url":"https://blog.mua.blue/favicon.ico"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://blog.mua.blue accesskey=h title="Bai (Alt + H)">Bai</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</span>
-</div>
-<ul id=menu>
-<li>
-<a href=https://www.mua.blue title=Home>
-<span>Home</span>
-</a>
-</li>
-<li>
-<a href=https://blog.mua.blue/archives title=Archive>
-<span>Archive</span>
-</a>
-</li>
-<li>
-<a href=https://blog.mua.blue/tags/ title=Tags>
-<span>Tags</span>
-</a>
-</li>
-<li>
-<a href=https://blog.mua.blue/search/ title="Search (Alt + /)" accesskey=/>
-<span>Search</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<h1 class=post-title>
-Chevereto图床安装
-</h1>
-<div class=post-meta>2021-09-25&nbsp;·&nbsp;1 分钟
-</div>
-</header> <div class=toc>
-<details>
-<summary accesskey=c title="(Alt + C)">
-<span class=details>目录</span>
-</summary>
-<div class=inner><ul>
-<li>
-<a href=#%e8%b5%b7%e5%9b%a0 aria-label=起因>起因</a></li>
-<li>
-<a href=#%e5%ae%89%e8%a3%85 aria-label=安装>安装</a></li>
-<li>
-<a href=#%e5%ae%89%e8%a3%85%e6%97%b6%e8%b8%a9%e7%9a%84%e5%9d%91 aria-label=安装时踩的坑>安装时踩的坑</a>
-</li>
-</ul>
-</div>
-</details>
-</div>
-<div class=post-content><h2 id=起因>起因<a hidden class=anchor aria-hidden=true href=#起因>#</a></h2>
-<p>在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。</p>
-<h2 id=安装>安装<a hidden class=anchor aria-hidden=true href=#安装>#</a></h2>
-<p><strong>方法1：</strong> <a href=https://github.com/chevereto/Chevereto-Free>Chevereto-Free Github</a>根据官方文档或者网上教程进行安装。</p>
-<p><strong>方法2：</strong><a href=https://hub.docker.com/r/nmtan/chevereto>nmtan/chevereto</a>使用docker安装</p>
-<p>因为docker安装起来非常方便，所以我选择<strong>方法2</strong>进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。</p>
-<p><a href=https://hub.docker.com/r/nmtan/chevereto>nmtan/chevereto</a>中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。</p>
-<ul>
-<li>
-<p>创建一个空目录，创建docker-compose.yml</p>
-</li>
-<li>
-<p>编写docker-compose.yml</p>
-</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e>#docker-compose.yml</span>
-<span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3&#39;</span>
-
-<span style=color:#f92672>services</span>:
-  <span style=color:#f92672>db</span>:
-    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>mariadb</span>
-    <span style=color:#f92672>volumes</span>:
-      - <span style=color:#ae81ff>./database:/var/lib/mysql:rw</span>
-    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-    <span style=color:#f92672>networks</span>:
-      - <span style=color:#ae81ff>private</span>
-    <span style=color:#f92672>environment</span>:
-      <span style=color:#f92672>MYSQL_ROOT_PASSWORD</span>: <span style=color:#ae81ff>chevereto_root</span>
-      <span style=color:#f92672>MYSQL_DATABASE</span>: <span style=color:#ae81ff>chevereto</span>
-      <span style=color:#f92672>MYSQL_USER</span>: <span style=color:#ae81ff>chevereto</span>
-      <span style=color:#f92672>MYSQL_PASSWORD</span>: <span style=color:#ae81ff>chevereto</span>
-
-  <span style=color:#f92672>chevereto</span>:
-    <span style=color:#f92672>depends_on</span>:
-      - <span style=color:#ae81ff>db</span>
-    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>nmtan/chevereto</span>
-    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-    <span style=color:#f92672>networks</span>:
-      - <span style=color:#ae81ff>private</span>
-    <span style=color:#f92672>environment</span>:
-      <span style=color:#f92672>CHEVERETO_DB_HOST</span>: <span style=color:#ae81ff>db</span>
-      <span style=color:#f92672>CHEVERETO_DB_USERNAME</span>: <span style=color:#ae81ff>chevereto</span>
-      <span style=color:#f92672>CHEVERETO_DB_PASSWORD</span>: <span style=color:#ae81ff>chevereto</span>
-      <span style=color:#f92672>CHEVERETO_DB_NAME</span>: <span style=color:#ae81ff>chevereto</span>
-      <span style=color:#f92672>CHEVERETO_DB_PREFIX</span>: <span style=color:#ae81ff>chv_</span>
-    <span style=color:#f92672>volumes</span>:
-      - <span style=color:#ae81ff>./images:/var/www/html/images:rw</span>
-      - <span style=color:#ae81ff>./php.ini:/usr/local/etc/php/php.ini:ro</span> <span style=color:#75715e>#这个配置文件是为了修改上传2M的限制</span>
-    <span style=color:#f92672>ports</span>:
-      - <span style=color:#ae81ff>8004</span>:<span style=color:#ae81ff>80</span>
-
-<span style=color:#f92672>networks</span>:
-  <span style=color:#f92672>private</span>:
-</code></pre></div><ul>
-<li>编写php.ini</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#a6e22e>memory_limit</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>256</span><span style=color:#a6e22e>M</span>;
-<span style=color:#a6e22e>upload_max_filesize</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span><span style=color:#a6e22e>M</span>;
-<span style=color:#a6e22e>post_max_size</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span><span style=color:#a6e22e>M</span>;
-</code></pre></div><ul>
-<li>
-<p>使用<code>docker-compose up -d</code>跑起来。</p>
-</li>
-<li>
-<p>宝塔面板创建一个网站<img loading=lazy src=https://images.mua.blue/images/2021/09/25/wbomY4.png alt>
-</p>
-</li>
-<li>
-<p>配置反向代理<img loading=lazy src=https://images.mua.blue/images/2021/09/25/qU7pZd.png alt>
-</p>
-</li>
-<li>
-<p>接着就可以打开网站进行安装，因为docker已经帮我们配置好了mysql和Chevereto之间的连接，我们只需要创建管理员账号。</p>
-</li>
-<li>
-<p>**(可选)**登上管理员账号，打开仪表盘->设置->网站<img loading=lazy src=https://images.mua.blue/images/2021/09/25/LbEyI9.png alt>
-</p>
-<p>将https改为强加，紧接着我们来到宝塔面板给域名申请一个ssl证书，这样和网站传输的数据就会比较安全。</p>
-</li>
-<li>
-<p>**(可选)**修改上传限制，打开仪表盘->设置->图片上传<img loading=lazy src=https://images.mua.blue/images/2021/09/25/fIoukO.png alt>
-</p>
-<p>前提是前面用php.ini对php进行配置了。</p>
-</li>
-</ul>
-<p><strong>enjoy!</strong></p>
-<h2 id=安装时踩的坑>安装时踩的坑<a hidden class=anchor aria-hidden=true href=#安装时踩的坑>#</a></h2>
-<ol>
-<li>
-<p>没有在仪表盘配置好https协议，就申请好证书使用https协议进行访问，导致静态文件的链接还是http，浏览器报错不加载http协议的静态文件。其中有一个问题还是没有解决，开始我是根据nmtan/chevereto仓库里的高级配置。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php>$val <span style=color:#f92672>=</span> <span style=color:#a6e22e>getenv</span>(<span style=color:#e6db74>&#39;CHEVERETO_HTTPS&#39;</span>);
-<span style=color:#66d9ef>if</span> ($val <span style=color:#f92672>!==</span> <span style=color:#66d9ef>false</span>) {
-    <span style=color:#75715e>/*
-</span><span style=color:#75715e>     * Specify whether user should connect to Chevereto via HTTPS instead of HTTP
-</span><span style=color:#75715e>     * Please note that Chevereto has excellent mechanism to detect this
-</span><span style=color:#75715e>     * already - https://github.com/Chevereto/Chevereto-Free/blob/0184f27a97daa55ec3b07560c5dd619d22abc907/lib/G/G.php#L113
-</span><span style=color:#75715e>     * So 99% of the time you won&#39;t have to bother with this. The only
-</span><span style=color:#75715e>     * usecase that I can image where you need to set this is if you have
-</span><span style=color:#75715e>     * a misconfigured reverse proxy that somehow doesn&#39;t include the
-</span><span style=color:#75715e>     * `http-x-forwarded-proto` header into the forwarded requests
-</span><span style=color:#75715e>     */</span>
-    $settings[<span style=color:#e6db74>&#39;https&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>strtolower</span>(<span style=color:#a6e22e>trim</span>($val)) <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;true&#39;</span>;
-}
-</code></pre></div><p>在docker-compose.yml里加了一个环境变量<code>CHEVERETO_HTTPS:1</code>可是没用。</p>
-</li>
-<li>
-<p>修改上传限制，将php.ini配置好后还是限制为2M，后来发现原来chevereto里也要改。先改php限制再改chevereto限制。</p>
-</li>
-</ol>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://blog.mua.blue/tags/2021-09/>2021-09</a></li>
-<li><a href=https://blog.mua.blue/tags/tech/>tech</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://blog.mua.blue/2021-09/upic%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE-chevereto/>
-<span class=title>« 上一页</span>
-<br>
-<span>uPic图床配置-Chevereto</span>
-</a>
-<a class=next href=https://blog.mua.blue/2021-09/%E5%9B%BE%E6%A0%87%E8%B7%9F%E9%9A%8F%E8%83%8C%E6%99%AF%E5%8F%98%E8%89%B2/>
-<span class=title>下一页 »</span>
-<br>
-<span>图标跟随背景变色</span>
-</a>
-</nav>
-</footer><div id=vcomments></div>
-<script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script>new Valine({el:'#vcomments',appId:'1eVtDydmuQELiOik5Q1ib4dj-MdYXbMMI',appKey:'7xumTKmufRWgiNNN6KUJAqEb',enableQQ:!0,requiredFields:['nick','mail']})</script>
-</article>
-</main>
-<footer class=footer>
-<span><a href=https://beian.miit.gov.cn>鄂ICP备2021014854号-1</a></span><br>
-<span>&copy; 2021 <a href=https://blog.mua.blue>Bai</a></span>
-<span>
-Powered by
+  #docker-compose.yml version: '3'  services:  db:  image: mariadb  volumes:  - ./database:/var/lib/mysql:rw  restart: always  networks:  - private  environment:  MYSQL_ROOT_PASSWORD: chevereto_root  MYSQL_DATABASE: chevereto  MYSQL_USER: chevereto  MYSQL_PASSWORD: chevereto   chevereto:  depends_on:  - db  image: nmtan/chevereto  restart: always  networks:  - private  environment:  CHEVERETO_DB_HOST: db  CHEVERETO_DB_USERNAME: chevereto  CHEVERETO_DB_PASSWORD: chevereto  CHEVERETO_DB_NAME: chevereto  CHEVERETO_DB_PREFIX: chv_  volumes:  - ."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://blog.mua.blue/posts/"},{"@type":"ListItem","position":3,"name":"Chevereto图床安装","item":"https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Chevereto图床安装","name":"Chevereto图床安装","description":"起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。\n安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。\n方法2：nmtan/chevereto使用docker安装\n因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。\nnmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。\n  创建一个空目录，创建docker-compose.yml\n  编写docker-compose.yml\n  #docker-compose.yml version: \u0026#39;3\u0026#39;  services:  db:  image: mariadb  volumes:  - ./database:/var/lib/mysql:rw  restart: always  networks:  - private  environment:  MYSQL_ROOT_PASSWORD: chevereto_root  MYSQL_DATABASE: chevereto  MYSQL_USER: chevereto  MYSQL_PASSWORD: chevereto   chevereto:  depends_on:  - db  image: nmtan/chevereto  restart: always  networks:  - private  environment:  CHEVERETO_DB_HOST: db  CHEVERETO_DB_USERNAME: chevereto  CHEVERETO_DB_PASSWORD: chevereto  CHEVERETO_DB_NAME: chevereto  CHEVERETO_DB_PREFIX: chv_  volumes:  - .","keywords":["2021-09","tech"],"articleBody":"起因 在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。\n安装 方法1： Chevereto-Free Github根据官方文档或者网上教程进行安装。\n方法2：nmtan/chevereto使用docker安装\n因为docker安装起来非常方便，所以我选择方法2进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。\nnmtan/chevereto中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。\n  创建一个空目录，创建docker-compose.yml\n  编写docker-compose.yml\n  #docker-compose.yml version: '3'  services:  db:  image: mariadb  volumes:  - ./database:/var/lib/mysql:rw  restart: always  networks:  - private  environment:  MYSQL_ROOT_PASSWORD: chevereto_root  MYSQL_DATABASE: chevereto  MYSQL_USER: chevereto  MYSQL_PASSWORD: chevereto   chevereto:  depends_on:  - db  image: nmtan/chevereto  restart: always  networks:  - private  environment:  CHEVERETO_DB_HOST: db  CHEVERETO_DB_USERNAME: chevereto  CHEVERETO_DB_PASSWORD: chevereto  CHEVERETO_DB_NAME: chevereto  CHEVERETO_DB_PREFIX: chv_  volumes:  - ./images:/var/www/html/images:rw  - ./php.ini:/usr/local/etc/php/php.ini:ro #这个配置文件是为了修改上传2M的限制  ports:  - 8004:80  networks:  private:  编写php.ini  memory_limit = 256M; upload_max_filesize = 100M; post_max_size = 100M;   使用docker-compose up -d跑起来。\n  宝塔面板创建一个网站  配置反向代理  接着就可以打开网站进行安装，因为docker已经帮我们配置好了mysql和Chevereto之间的连接，我们只需要创建管理员账号。\n  **(可选)**登上管理员账号，打开仪表盘-设置-网站将https改为强加，紧接着我们来到宝塔面板给域名申请一个ssl证书，这样和网站传输的数据就会比较安全。\n  **(可选)**修改上传限制，打开仪表盘-设置-图片上传前提是前面用php.ini对php进行配置了。\n  enjoy!\n安装时踩的坑   没有在仪表盘配置好https协议，就申请好证书使用https协议进行访问，导致静态文件的链接还是http，浏览器报错不加载http协议的静态文件。其中有一个问题还是没有解决，开始我是根据nmtan/chevereto仓库里的高级配置。\n$val = getenv('CHEVERETO_HTTPS'); if ($val !== false) {  /* * Specify whether user should connect to Chevereto via HTTPS instead of HTTP * Please note that Chevereto has excellent mechanism to detect this * already - https://github.com/Chevereto/Chevereto-Free/blob/0184f27a97daa55ec3b07560c5dd619d22abc907/lib/G/G.php#L113 * So 99% of the time you won't have to bother with this. The only * usecase that I can image where you need to set this is if you have * a misconfigured reverse proxy that somehow doesn't include the * `http-x-forwarded-proto` header into the forwarded requests */  $settings['https'] = strtolower(trim($val)) === 'true'; } 在docker-compose.yml里加了一个环境变量CHEVERETO_HTTPS:1可是没用。\n  修改上传限制，将php.ini配置好后还是限制为2M，后来发现原来chevereto里也要改。先改php限制再改chevereto限制。\n  ","wordCount":"185","inLanguage":"zh","datePublished":"2021-09-25T18:23:24+08:00","dateModified":"2021-09-25T18:23:24+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.mua.blue/2021-09/chevereto%E5%9B%BE%E5%BA%8A%E5%AE%89%E8%A3%85/"},"publisher":{"@type":"Organization","name":"Bai","logo":{"@type":"ImageObject","url":"https://blog.mua.blue/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://blog.mua.blue accesskey=h title="Bai (Alt + H)">Bai</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu><li><a href=https://www.mua.blue title=Home><span>Home</span></a></li><li><a href=https://blog.mua.blue/archives title=Archive><span>Archive</span></a></li><li><a href=https://blog.mua.blue/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://blog.mua.blue/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>Chevereto图床安装</h1><div class=post-meta>2021-09-25&nbsp;·&nbsp;1 分钟</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#%e8%b5%b7%e5%9b%a0 aria-label=起因>起因</a></li><li><a href=#%e5%ae%89%e8%a3%85 aria-label=安装>安装</a></li><li><a href=#%e5%ae%89%e8%a3%85%e6%97%b6%e8%b8%a9%e7%9a%84%e5%9d%91 aria-label=安装时踩的坑>安装时踩的坑</a></li></ul></div></details></div><div class=post-content><h2 id=起因>起因<a hidden class=anchor aria-hidden=true href=#起因>#</a></h2><p>在写一篇md的时候突然想插入图片，可是本地图片插入后hugo无法正确的生成文章到服务器，这时候就需要使用url图片了。于是我在网上找到了Chevereto。</p><h2 id=安装>安装<a hidden class=anchor aria-hidden=true href=#安装>#</a></h2><p><strong>方法1：</strong> <a href=https://github.com/chevereto/Chevereto-Free>Chevereto-Free Github</a>根据官方文档或者网上教程进行安装。</p><p><strong>方法2：</strong><a href=https://hub.docker.com/r/nmtan/chevereto>nmtan/chevereto</a>使用docker安装</p><p>因为docker安装起来非常方便，所以我选择<strong>方法2</strong>进行安装Chevereto。如果没有安装docker and docker-compose可以去看我之前的文章。</p><p><a href=https://hub.docker.com/r/nmtan/chevereto>nmtan/chevereto</a>中的overview里已经给出了docker-compose.yml，我们可以直接拿来使用。</p><ul><li><p>创建一个空目录，创建docker-compose.yml</p></li><li><p>编写docker-compose.yml</p></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e>#docker-compose.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>db</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>mariadb</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./database:/var/lib/mysql:rw</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>private</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>MYSQL_ROOT_PASSWORD</span>: <span style=color:#ae81ff>chevereto_root</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>MYSQL_DATABASE</span>: <span style=color:#ae81ff>chevereto</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>MYSQL_USER</span>: <span style=color:#ae81ff>chevereto</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>MYSQL_PASSWORD</span>: <span style=color:#ae81ff>chevereto</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>chevereto</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>depends_on</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>db</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>nmtan/chevereto</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>private</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>CHEVERETO_DB_HOST</span>: <span style=color:#ae81ff>db</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>CHEVERETO_DB_USERNAME</span>: <span style=color:#ae81ff>chevereto</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>CHEVERETO_DB_PASSWORD</span>: <span style=color:#ae81ff>chevereto</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>CHEVERETO_DB_NAME</span>: <span style=color:#ae81ff>chevereto</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>CHEVERETO_DB_PREFIX</span>: <span style=color:#ae81ff>chv_</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./images:/var/www/html/images:rw</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./php.ini:/usr/local/etc/php/php.ini:ro</span> <span style=color:#75715e>#这个配置文件是为了修改上传2M的限制</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>8004</span>:<span style=color:#ae81ff>80</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>private</span>:
+</span></span></code></pre></div><ul><li>编写php.ini</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#a6e22e>memory_limit</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>256</span><span style=color:#a6e22e>M</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>upload_max_filesize</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span><span style=color:#a6e22e>M</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>post_max_size</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span><span style=color:#a6e22e>M</span>;
+</span></span></code></pre></div><ul><li><p>使用<code>docker-compose up -d</code>跑起来。</p></li><li><p>宝塔面板创建一个网站<img loading=lazy src=https://images.mua.blue/images/2021/09/25/wbomY4.png alt></p></li><li><p>配置反向代理<img loading=lazy src=https://images.mua.blue/images/2021/09/25/qU7pZd.png alt></p></li><li><p>接着就可以打开网站进行安装，因为docker已经帮我们配置好了mysql和Chevereto之间的连接，我们只需要创建管理员账号。</p></li><li><p>**(可选)**登上管理员账号，打开仪表盘->设置->网站<img loading=lazy src=https://images.mua.blue/images/2021/09/25/LbEyI9.png alt></p><p>将https改为强加，紧接着我们来到宝塔面板给域名申请一个ssl证书，这样和网站传输的数据就会比较安全。</p></li><li><p>**(可选)**修改上传限制，打开仪表盘->设置->图片上传<img loading=lazy src=https://images.mua.blue/images/2021/09/25/fIoukO.png alt></p><p>前提是前面用php.ini对php进行配置了。</p></li></ul><p><strong>enjoy!</strong></p><h2 id=安装时踩的坑>安装时踩的坑<a hidden class=anchor aria-hidden=true href=#安装时踩的坑>#</a></h2><ol><li><p>没有在仪表盘配置好https协议，就申请好证书使用https协议进行访问，导致静态文件的链接还是http，浏览器报错不加载http协议的静态文件。其中有一个问题还是没有解决，开始我是根据nmtan/chevereto仓库里的高级配置。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span>$val <span style=color:#f92672>=</span> <span style=color:#a6e22e>getenv</span>(<span style=color:#e6db74>&#39;CHEVERETO_HTTPS&#39;</span>);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> ($val <span style=color:#f92672>!==</span> <span style=color:#66d9ef>false</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * Specify whether user should connect to Chevereto via HTTPS instead of HTTP
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * Please note that Chevereto has excellent mechanism to detect this
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * already - https://github.com/Chevereto/Chevereto-Free/blob/0184f27a97daa55ec3b07560c5dd619d22abc907/lib/G/G.php#L113
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * So 99% of the time you won&#39;t have to bother with this. The only
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * usecase that I can image where you need to set this is if you have
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * a misconfigured reverse proxy that somehow doesn&#39;t include the
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * `http-x-forwarded-proto` header into the forwarded requests
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
+</span></span><span style=display:flex><span>    $settings[<span style=color:#e6db74>&#39;https&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>strtolower</span>(<span style=color:#a6e22e>trim</span>($val)) <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;true&#39;</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>在docker-compose.yml里加了一个环境变量<code>CHEVERETO_HTTPS:1</code>可是没用。</p></li><li><p>修改上传限制，将php.ini配置好后还是限制为2M，后来发现原来chevereto里也要改。先改php限制再改chevereto限制。</p></li></ol></div><footer class=post-footer><ul class=post-tags><li><a href=https://blog.mua.blue/tags/2021-09/>2021-09</a></li><li><a href=https://blog.mua.blue/tags/tech/>tech</a></li></ul><nav class=paginav><a class=prev href=https://blog.mua.blue/2021-09/upic%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE-chevereto/><span class=title>« 上一页</span><br><span>uPic图床配置-Chevereto</span></a>
+<a class=next href=https://blog.mua.blue/2021-09/%E5%9B%BE%E6%A0%87%E8%B7%9F%E9%9A%8F%E8%83%8C%E6%99%AF%E5%8F%98%E8%89%B2/><span class=title>下一页 »</span><br><span>图标跟随背景变色</span></a></nav></footer><div id=vcomments></div><script src=//unpkg.com/valine/dist/Valine.min.js></script>
+<script>new Valine({el:"#vcomments",appId:"1eVtDydmuQELiOik5Q1ib4dj-MdYXbMMI",appKey:"7xumTKmufRWgiNNN6KUJAqEb",enableQQ:!0,requiredFields:["nick","mail"]})</script></article></main><footer class=footer><span><a href=https://beian.miit.gov.cn>鄂ICP备2021014854号-1</a></span><br><span>&copy; 2022 <a href=https://blog.mua.blue>Bai</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='复制';function d(){a.innerText='已复制！',setTimeout(()=>{a.innerText='复制'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
-</body>
-</html>
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(t){t.preventDefault();var e=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(e)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(e)}']`).scrollIntoView({behavior:"smooth"}),e==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${e}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(t=>{const n=t.parentNode.parentNode,e=document.createElement("button");e.classList.add("copy-code"),e.innerText="复制";function s(){e.innerText="已复制！",setTimeout(()=>{e.innerText="复制"},2e3)}e.addEventListener("click",o=>{if("clipboard"in navigator){navigator.clipboard.writeText(t.textContent),s();return}const e=document.createRange();e.selectNodeContents(t);const n=window.getSelection();n.removeAllRanges(),n.addRange(e);try{document.execCommand("copy"),s()}catch(e){}n.removeRange(e)}),n.classList.contains("highlight")?n.appendChild(e):n.parentNode.firstChild==n||(t.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?t.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(e):t.parentNode.appendChild(e))})</script></body></html>
